@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Payment - Xelor's Cafe</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #f7f1e3;
+            color: #ff6347;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .payment-methods button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1.2rem;
+            width: 80%;
+        }
+
+        .payment-methods button:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+            background-color: #f44336;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+
+        .back-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Choose Your Payment Method</h2>
+
+    <!-- Available Payment Methods -->
+    <div class="payment-methods">
+        <button onclick="chooseCardPayment()">Pay with Credit/Debit Card</button>
+        <button onclick="chooseGcash()">Pay with GCash</button>
+        <button onclick="choosePayPal()">Pay with PayPal</button>
+        <button onclick="chooseOTC()">Pay Over-the-Counter</button>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBackToCheckout()">Back to Checkout</button>
+
+    <script>
+        // Function to handle Credit/Debit Card Payment
+        function chooseCardPayment() {
+            alert("This is a placeholder for the Credit/Debit Card payment method.");
+            // You can redirect or show a message
+            window.location.href = 'card-payment.html';  // Replace with actual payment page if needed
+        }
+
+        // Function to handle GCash Payment
+        function chooseGcash() {
+            alert("This is a placeholder for the GCash payment method.");
+            // You can redirect or show a message
+            window.location.href = 'gcash-payment.html';  // Replace with actual payment page if needed
+        }
+
+        // Function to handle PayPal Payment
+        function choosePayPal() {
+            alert("This is a placeholder for the PayPal payment method.");
+            // You can redirect or show a message
+            window.location.href = 'paypal-payment.html';  // Replace with actual payment page if needed
+        }
+
+        // Function to handle Over-the-Counter Payment
+        function chooseOTC() {
+            alert("You selected Over-the-Counter payment. Please refer to the instructions below.");
+            // Redirect to OTC payment instructions
+            window.location.href = 'otc-payment.html';  // Replace with actual OTC payment page
+        }
+
+        // Function to go back to the checkout page
+        function goBackToCheckout() {
+            window.location.href = 'checkout.html';  // Go back to the checkout page
+        }
+    </script>
+</body>
+</html>

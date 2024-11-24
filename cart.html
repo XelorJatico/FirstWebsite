@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Xelor's Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Cart Page Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #f7f1e3;
+            color: #ff6347;
+        }
+
+        .cart-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .cart-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cart-items li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .checkout-button {
+            background-color: #d2691e;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .checkout-button:hover {
+            background-color: #8b4513;
+        }
+
+        .delete-button {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-button:hover {
+            background-color: #d24b3e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo as Image -->
+            <a href="#" class="logo">
+                <img src="xelors-cafe-logo.jpeg" alt="Xelor's Coffee Logo" class="navbar-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="my-account.html">My Account</a></li>
+                <li><a href="login.html" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <h2>Your Cart</h2>
+
+        <!-- Cart Items -->
+        <ul id="cart-items" class="cart-items"></ul>
+
+        <!-- Total Price -->
+        <p class="total">Total: ₱<span id="total-price">0.00</span></p>
+
+        <!-- Proceed to Checkout Button -->
+        <button class="checkout-button" onclick="proceedToCheckout()">Proceed to Checkout</button>
+    </section>
+
+    <script>
+        // Load the cart from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsList = document.getElementById('cart-items');
+        const totalPriceElement = document.getElementById('total-price');
+
+        // Function to update the cart display and total price
+        function updateCart() {
+            cartItemsList.innerHTML = '';  // Clear existing cart items
+            let total = 0;
+
+            // Display the cart items with delete button
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `${item.item} - ₱${item.price} 
+                                <button class="delete-button" data-index="${index}">Delete</button>`;
+                cartItemsList.appendChild(li);
+
+                // Add to total
+                total += parseFloat(item.price) * item.quantity;
+            });
+
+            // Update the total price
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+
+        // Delete item from cart
+        cartItemsList.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-button')) {
+                const index = event.target.getAttribute('data-index');
+                // Remove the item from the cart array
+                cart.splice(index, 1);
+                // Update localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                // Re-render the cart
+                updateCart();
+            }
+        });
+
+        
+
+        // Proceed to Checkout (for payment)
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add items to your cart before proceeding.");
+                return;
+            }
+            // Redirect to checkout page (for payment)
+            window.location.href = 'checkout.html'; // Redirect to the checkout page
+        }
+
+        // Initial cart display
+        updateCart();
+    </script>
+</body>
+</html>

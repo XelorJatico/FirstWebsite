@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Xelor's Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styles for menu and add to cart */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #757573;
+            color: #3e2723;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3e2723;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid #d2691e;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #d2691e;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .menu-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .menu-section h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .menu-item span {
+            flex: 1;
+            text-align: left;
+        }
+
+        .menu-item .quantity-input {
+            width: 50px;
+            text-align: center;
+            padding: 5px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #757573;
+        }
+
+        .menu-item button {
+            background-color: #d2691e;
+            color: #3e2723;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .menu-item button:hover {
+            background-color: #8b4513;
+        }
+
+        .menu-item .order-now-button {
+            background-color: #4caf50;
+        }
+
+        .menu-item .order-now-button:hover {
+            background-color: #388e3c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="xelors-cafe-logo.jpeg" alt="Xelor's Cafe Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="my-account.html">My Account</a></li>
+            <li><a href="cart.html">Cart</a></li> <!-- Added Cart Link -->
+            <li><a href="login.html" onclick="logout()">Log Out</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Menu Section -->
+<section class="menu-section">
+    <h2>Our Menu</h2>
+
+    <!-- Coffee Items -->
+    <h3>Coffee</h3>
+    <div id="coffee-list">
+        <div class="menu-item">
+            <span>Espresso - ₱180.00</span>
+            <input type="number" class="quantity-input" id="espresso-quantity" min="0" value="0">
+            <button class="order-button" data-item="Espresso" data-price="180.00">Add to Cart</button>
+            <button class="order-now-button" data-item="Espresso" data-price="180.00">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <span>Latte - ₱270.00</span>
+            <input type="number" class="quantity-input" id="latte-quantity" min="0" value="0">
+            <button class="order-button" data-item="Latte" data-price="270.00">Add to Cart</button>
+            <button class="order-now-button" data-item="Latte" data-price="270.00">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <span>Cappuccino - ₱240.00</span>
+            <input type="number" class="quantity-input" id="cappuccino-quantity" min="0" value="0">
+            <button class="order-button" data-item="Cappuccino" data-price="240.00">Add to Cart</button>
+            <button class="order-now-button" data-item="Cappuccino" data-price="240.00">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <span>Mocha - ₱290.00</span>
+            <input type="number" class="quantity-input" id="mocha-quantity" min="0" value="0">
+            <button class="order-button" data-item="Mocha" data-price="290.00">Add to Cart</button>
+            <button class="order-now-button" data-item="Mocha" data-price="290.00">Order Now</button>
+        </div>
+        <div class="menu-item">
+            <span>Americano - ₱210.00</span>
+            <input type="number" class="quantity-input" id="americano-quantity" min="0" value="0">
+            <button class="order-button" data-item="Americano" data-price="210.00">Add to Cart</button>
+            <button class="order-now-button" data-item="Americano" data-price="210.00">Order Now</button>
+        </div>
+    </div>
+
+    <!-- Pastries Section -->
+<h3>Pastries</h3>
+<div id="pastry-list">
+    <div class="menu-item">
+        <span>Chocolate Croissant - ₱140.00</span>
+        <input type="number" class="quantity-input" id="chocolate-croissant-quantity" min="0" value="0">
+        <button class="order-button" data-item="Chocolate Croissant" data-price="140.00">Add to Cart</button>
+        <button class="order-now-button" data-item="Chocolate Croissant" data-price="140.00">Order Now</button>
+    </div>
+    <div class="menu-item">
+        <span>Blueberry Muffin - ₱120.00</span>
+        <input type="number" class="quantity-input" id="blueberry-muffin-quantity" min="0" value="0">
+        <button class="order-button" data-item="Blueberry Muffin" data-price="120.00">Add to Cart</button>
+        <button class="order-now-button" data-item="Blueberry Muffin" data-price="120.00">Order Now</button>
+    </div>
+    <div class="menu-item">
+        <span>Cinnamon Roll - ₱150.00</span>
+        <input type="number" class="quantity-input" id="cinnamon-roll-quantity" min="0" value="0">
+        <button class="order-button" data-item="Cinnamon Roll" data-price="150.00">Add to Cart</button>
+        <button class="order-now-button" data-item="Cinnamon Roll" data-price="150.00">Order Now</button>
+    </div>
+    <div class="menu-item">
+        <span>Almond Croissant - ₱160.00</span>
+        <input type="number" class="quantity-input" id="almond-croissant-quantity" min="0" value="0">
+        <button class="order-button" data-item="Almond Croissant" data-price="160.00">Add to Cart</button>
+        <button class="order-now-button" data-item="Almond Croissant" data-price="160.00">Order Now</button>
+    </div>
+    <div class="menu-item">
+        <span>Cheese Danish - ₱130.00</span>
+        <input type="number" class="quantity-input" id="cheese-danish-quantity" min="0" value="0">
+        <button class="order-button" data-item="Cheese Danish" data-price="130.00">Add to Cart</button>
+        <button class="order-now-button" data-item="Cheese Danish" data-price="130.00">Order Now</button>
+    </div>
+</div>
+
+<script>
+    // Function to add items to the cart
+    document.querySelectorAll('.order-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.getAttribute('data-item');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const quantityId = item.toLowerCase().replace(/\s+/g, '-') + '-quantity'; // Generate the corresponding input ID
+            const quantityInput = document.getElementById(quantityId);
+            const quantity = parseInt(quantityInput ? quantityInput.value : 0);  // Default to 0 if the input is not found
+
+            if (quantity > 0) {
+                // Create an item object
+                const cartItem = { item, price, quantity };
+
+                // Get the current cart from localStorage, or an empty array if it doesn't exist
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Add the item to the cart
+                cart.push(cartItem);
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert(`${item} (x${quantity}) has been added to your cart.`);
+            } else {
+                alert("Please enter a quantity greater than 0.");
+            }
+        });
+    });
+
+    // Function to handle "Order Now" button
+    document.querySelectorAll('.order-now-button').forEach(button => {
+        button.addEventListener('click', function() {
+            const item = this.getAttribute('data-item');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const quantityId = item.toLowerCase().replace(/\s+/g, '-') + '-quantity'; // Generate the corresponding input ID
+            const quantityInput = document.getElementById(quantityId);
+            const quantity = parseInt(quantityInput ? quantityInput.value : 0);  // Default to 0 if the input is not found
+
+            if (quantity > 0) {
+                // Create an item object
+                const cartItem = { item, price, quantity };
+
+                // Get the current cart from localStorage, or an empty array if it doesn't exist
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Add the item to the cart
+                cart.push(cartItem);
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Redirect to checkout page
+                window.location.href = 'cart.html'; // Link to cart.html page
+            } else {
+                alert("Please enter a quantity greater than 0.");
+            }
+        });
+    });
+</script>
+</body>
+</html>
+

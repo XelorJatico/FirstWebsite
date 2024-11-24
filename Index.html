@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xelor's Cafe</title>
+    <!-- Favicon for browser tab -->
+    <link rel="icon" href="xelors-cafe-logo.jpeg" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check login status on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                // Redirect to login page if not logged in
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo as Image -->
+            <a href="#" class="logo">
+                <img src="xelors-cafe-logo.jpeg" alt="Xelor's Coffee Logo" class="navbar-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="my-account.html">My Account</a></li>
+                <li><a href="login.html" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Coffee Background Section -->
+    <section class="coffee-background">
+        <div class="coffee-content">
+            <h2>Welcome to Xelor's Cafe</h2>
+            <p>Experience the finest coffee. Your perfect coffee break starts here!</p>
+            <p>We created this website to avoid long waiting times and lessen the hustle—bringing your favorite coffee straight to you, quickly and easily!</p>
+        </section>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Xelor's Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Logout function to clear login state
+        function logout() {
+            localStorage.removeItem('isLoggedIn'); // Clear login flag
+            alert('You have been logged out.');
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Xelor's Cafe</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #f7f1e3; /* Soft beige background for café ambiance */
+            color: #3e2723; /* Coffee brown text */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3e2723;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-logo {
+    width: 50px; /* Adjust the width as needed */
+    height: auto;
+    border-radius: 50%; /* Optional: makes the logo circular */
+}
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #d2691e;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            color: #3e2723;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .contact-details span {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3e2723;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+      <!-- Navigation Bar -->
+      <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo as Image -->
+            <a href="#" class="logo">
+                <img src="xelors-cafe-logo.jpeg" alt="Xelor's Coffee Logo" class="navbar-logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Our Menu</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="my-account.html">My Account</a></li>
+                <li><a href="login.html" onclick="logout()">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+
+  <!-- Coffee Background Section -->
+<section class="coffee-background">
+    <div class="coffee-content">
+        <h2>Contact Us</h2> <!-- Added Contact Us heading -->
+        <p>We’d love to hear from you! Feel free to reach out to us using the information below:</p> <!-- Added supporting text -->
+        
+        <div class="contact-details">
+            <p><span>Address:</span> STI College Fairview, Regalado Highway, Quezon City</p>
+            <p><span>Phone:</span> (02) 123-4567</p>
+            <p><span>Email:</span> <a href="mailto:info@sticollegefairview.edu.ph">info@sticollegefairview.edu.ph</a></p>
+        </div>
+    </div>
+</section>
+
+
+    <script>
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            alert("You have been logged out.");
+        }
+    </script>
+</body>
+</html>

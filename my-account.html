@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Xelor's Cafe</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #7d7a72;
+            color: #3e2723;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #3e2723;
+            padding: 10px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 50%;
+            border: 2px solid #d2691e;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar .nav-links li {
+            display: inline;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #d2691e;
+        }
+
+        /* My Account Section */
+        .account-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .account-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #d2691e;
+            background-color: #fff3e0;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .account-section p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #8b4513;
+        }
+
+        .account-section a {
+            text-decoration: none;
+            color: #d2691e;
+            font-size: 1.2rem;
+        }
+
+        .account-section a:hover {
+            color: #8b4513;
+        }
+
+        .logout-button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .logout-button:hover {
+            background-color: #d24b3e;
+        }
+
+        /* Discount Section */
+        .discount-section {
+            margin-top: 20px;
+            background-color: #fff3e0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .discount-section input {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #d2691e;
+            width: 200px;
+        }
+
+        .discount-section button {
+            padding: 10px 20px;
+            background-color: #3e2723;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .discount-section button:hover {
+            background-color: #d2691e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="xelors-cafe-logo.jpeg" alt="Xelor's Cafe Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- My Account Section -->
+<section class="account-section">
+    <h2>Welcome to Your Account</h2>
+    <p>Hi, <span id="username">Guest</span>! This is your account page where you can easily browse the menu, review your cart, and manage your orders. Have a great time exploring!</p>
+
+    <!-- Discount Section -->
+    <div class="discount-section">
+        <h3>Enter Discount Code</h3>
+        <input type="text" id="discountCode" placeholder="Enter discount code" />
+        <button onclick="applyDiscount()">Apply Discount</button>
+        <p id="discountMessage"></p>
+    </div>
+
+    <p><a href="menu.html">Browse Our Menu</a></p>
+    <p><a href="cart.html">View Your Cart</a></p>
+    <!-- Proceed to Checkout Link -->
+    <p><a href="javascript:void(0)" onclick="proceedToCheckout()">Proceed To Checkout</a></p>
+
+    <!-- Logout Button -->
+    <button class="logout-button" type="button" onclick="logout()">Log Out</button>
+
+</section>
+
+
+    <script>
+        // Function to apply discount
+        function applyDiscount() {
+            const discountCode = document.getElementById("discountCode").value;
+            const discountMessage = document.getElementById("discountMessage");
+    
+            // Check if a discount has already been applied
+            if (localStorage.getItem("discount")) {
+                discountMessage.textContent = "You have already applied a discount.";
+                discountMessage.style.color = "red";
+                return; // Prevent applying more than one discount
+            }
+    
+            // Simple discount logic (update with actual discount codes)
+            const discountCodes = {
+                "XELOR10": "10%",
+                "XELOR20": "20%",
+                "XELOR40": "40%",
+                "XELOR60": "60%",
+                "XELOR80": "80%",
+                "XELOR100": "100%"
+            };
+    
+            if (discountCodes[discountCode]) {
+                discountMessage.textContent = `Discount applied: ${discountCodes[discountCode]} off!`;
+                discountMessage.style.color = "green";
+                localStorage.setItem("discount", discountCodes[discountCode]);
+            } else {
+                discountMessage.textContent = "Invalid discount code.";
+                discountMessage.style.color = "red";
+            }
+        }
+        // Logout function
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("discount");  // Remove the discount on logout
+            window.location.href = "login.html"; // Redirect to the homepage after logout
+        }
+
+        // Display user info if logged in
+        if (localStorage.getItem("username")) {
+            document.getElementById("username").textContent = localStorage.getItem("username");
+        }
+    </script>
+    <!-- Place this just before closing the body tag -->
+<script>
+    // Proceed to Checkout function
+    function proceedToCheckout() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || []; // Load the cart from localStorage
+
+        if (cart.length === 0) {
+            // Alert the user and redirect to My Account page
+            alert("Your cart is empty. Add items to your cart before proceeding to checkout.");
+            window.location.href = "my-account.html"; // Redirect to My Account page
+        } else {
+            // Proceed to checkout page
+            window.location.href = "checkout.html";
+        }
+    }
+</script>
+
+</body>
+</html>
+

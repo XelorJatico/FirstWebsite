@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Xelor's Coffee</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #f7f1e3;
+            color: #ff6347;
+            text-align: center;
+            padding: 50px;
+            background-image: url('now-b'); /* Add your image path here */
+            background-size: cover;
+            background-position: center;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .home-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .home-button:hover {
+            background-color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Thank You for Your Order!</h2>
+    <p>Your order is now being processed. We will notify you once it’s ready for pickup. Thank you for choosing Xelor's Cafe!</p>
+
+    <div class="button-container">
+        <button class="home-button" onclick="goHome()">Return to Home</button>
+    </div>
+
+    <script>
+        // Clear the cart when the user reaches the thank you page
+        localStorage.removeItem('cart');
+    </script>
+
+    <script>
+        // Redirect user to the homepage after order completion
+        function goHome() {
+            window.location.href = 'index.html';  // Redirect to the home page
+        }
+    </script>
+
+</body>
+</html>
+

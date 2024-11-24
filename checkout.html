@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Xelor's Coffee</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Checkout Page Styles */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background-color: #757573;
+            color: #3e2723;
+        }
+
+        .checkout-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .checkout-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .checkout-summary {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .order-summary {
+            margin-bottom: 20px;
+        }
+
+        .confirm-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .confirm-button:hover {
+            background-color: #388e3c;
+        }
+
+        .cancel-button {
+            background-color: #d2691e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cancel-button:hover {
+            background-color: #8b4513;
+        }
+
+        .order-status {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="checkout-section">
+        <h2>Checkout</h2>
+
+        <!-- Order Summary -->
+        <div class="order-summary" id="order-summary"></div>
+
+        <!-- Total Price -->
+        <p class="checkout-summary">Total: ₱<span id="checkout-total">0.00</span></p>
+
+        <!-- Confirm and Cancel Buttons -->
+        <button class="confirm-button" onclick="confirmOrder()">Confirm Order</button>
+        <button class="cancel-button" onclick="cancelOrder()">Cancel</button>
+
+        <!-- Order Status Message -->
+        <p id="order-status" class="order-status"></p>
+    </section>
+
+    <script>
+        // Load cart and discount data from localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const discount = localStorage.getItem("discount") || "0%";
+        const usedDiscount = localStorage.getItem("usedDiscount");
+        const orderSummaryElement = document.getElementById('order-summary');
+        const checkoutTotalElement = document.getElementById('checkout-total');
+        const orderStatusElement = document.getElementById('order-status');
+
+        // Update the order summary and calculate the total
+        function updateOrderSummary() {
+            let total = 0;
+            orderSummaryElement.innerHTML = ''; // Clear any previous items
+
+            // Display cart items
+            cart.forEach(item => {
+                const itemElement = document.createElement('p');
+                itemElement.innerHTML = `${item.item} (x${item.quantity}) - ₱${(item.price * item.quantity).toFixed(2)}`;
+                orderSummaryElement.appendChild(itemElement);
+
+                total += item.price * item.quantity;
+            });
+
+            // Apply the discount if available and not yet used
+            if (discount !== "0%" && !usedDiscount) {
+                const discountValue = parseFloat(discount) / 100; // Convert "10%" to 0.1
+                const discountAmount = total * discountValue;
+                total -= discountAmount;
+
+                orderStatusElement.textContent = `Discount applied: ${discount}`;
+                orderStatusElement.style.color = "black";
+
+                // Mark discount as used
+                localStorage.setItem("usedDiscount", "true");
+                localStorage.removeItem("discount"); // Remove the discount code
+            } else if (usedDiscount) {
+                // Inform user that the discount has already been used
+                orderStatusElement.textContent = "Discount already used. No discount applied.";
+                orderStatusElement.style.color = "red";
+            } else {
+                // Inform user no discount is available
+                orderStatusElement.textContent = "No discount available.";
+                orderStatusElement.style.color = "red";
+            }
+
+            // Update total price in the DOM
+            checkoutTotalElement.textContent = total.toFixed(2);
+
+            // Save the updated total back to localStorage
+            localStorage.setItem("totalPrice", total.toFixed(2));
+        }
+
+        // Function to confirm the order
+        function confirmOrder() {
+            alert("Thank you for your purchase! Redirecting to payment page...");
+
+            // Clear discount usage flags after confirmation
+            localStorage.removeItem("usedDiscount");
+            localStorage.removeItem("discount");
+
+            // Redirect to a payment options page
+            window.location.href = 'choose-payment.html';
+        }
+
+        // Function to cancel the order
+        function cancelOrder() {
+            alert("Order canceled. Returning to cart...");
+            window.location.href = 'cart.html'; // Redirect back to the cart page
+        }
+
+        // Initialize the checkout page
+        window.onload = function () {
+            updateOrderSummary(); // Populate the order summary and apply any discounts
+        };
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,327 @@
+/* About Us Section */
+.about-us-page {
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+}
+
+/* Creator Info Section */
+.creator-info {
+    display: flex;
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Creator Image */
+.creator-img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px; /* Space between image and text */
+}
+
+/* Creator Bio */
+.creator-bio {
+    max-width: 600px;
+}
+
+.creator-bio h3 {
+    font-size: 1.8rem;
+    color: #3e2723; /* Dark brown */
+}
+
+.creator-bio p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+.account-section {
+    padding: 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-info {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.account-info h1 {
+    color: #d2691e; /* Coffee color */
+    margin-bottom: 20px;
+}
+
+.account-info p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    background-color: #d2691e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-btn:hover {
+    background-color: #a0522d;
+}
+
+
+
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Font Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Basic Styles for Body */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f1e3;
+    color: #3e2723;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #3e2723; /* Dark brown */
+    padding: 20px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Container for Navbar Content */
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo Styles */
+.navbar-logo {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+    border: 2px solid #d2691e; /* Adding subtle border for emphasis */
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+/* Navigation Link Style */
+.nav-links li {
+    display: inline;
+}
+
+/* Links inside nav */
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    background-color: transparent; /* Keep background transparent for subtle effect */
+    transition: background-color 0.3s, transform 0.3s ease, padding 0.3s ease;
+}
+
+/* Hover effect for Links */
+.nav-links a:hover {
+    background-color: #d2691e; /* Lighter brown */
+    transform: translateY(-3px);
+    padding: 12px 24px; /* Slightly increase padding on hover for emphasis */
+}
+
+/* Active link styles */
+.nav-links a:active {
+    background-color: #8b4513; /* Darker brown */
+    transform: translateY(1px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .nav-links a {
+        padding: 12px 25px;
+        font-size: 1.3rem;
+    }
+}
+
+
+
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #f4f4f4; /* Set background color for the entire page */
+}
+
+
+
+
+/* About Us Page */
+.about-us-page {
+    padding: 50px 20px;
+    text-align: center;
+    background: url('') center center/cover no-repeat; /* Replace with your coffee background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Ensure full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Text box inside About Us section */
+.about-us-page .text-box {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark background for readability */
+    color: white; /* Set text color to white */
+    padding: 40px;
+    border-radius: 8px; /* Rounded corners */
+    max-width: 800px; /* Limit the width */
+    text-align: left; /* Align text to the left */
+    margin: 0 auto; /* Center the box */
+}
+
+/* Heading inside the text box */
+.about-us-page .text-box h2 {
+    font-size: 2.5rem;
+    color: #f4a261; /* Coffee-themed color */
+    margin-bottom: 20px;
+}
+
+/* Paragraph inside the text box */
+.about-us-page .text-box p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 50px; /* Add space above the footer */
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Coffee Background Section Styles */
+.coffee-background {
+    background: url('') center center/cover no-repeat; /* Add your coffee-themed background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Fill the entire height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; /* Set text color to white for contrast */
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add some padding around the content */
+    position: relative; /* Ensures the text stays in place */
+}
+
+/* Content Box Styling */
+.coffee-content {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for readability */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for the content box */
+    max-width: 600px; /* Limit the width to avoid too wide text */
+}
+
+/* Heading Styling */
+.coffee-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add a shadow for better contrast */
+}
+
+/* Paragraph Styling */
+.coffee-content p {
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Add a shadow for better contrast */
+}
+
+/* Optional: General body text styling for white color */
+h2, p {
+    color: white;
+    font-family: 'Arial', sans-serif; /* Ensure consistent font */
+}
+
+
+.explore-button {
+    display: inline-block;
+    background-color: #ff7f50; /* Button color */
+    color: white; /* Text color */
+    padding: 12px 25px;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.explore-button:hover {
+    background-color: #e67e22; /* Darken the button color on hover */
+}
+
+/* Footer Section */
+footer {
+    background: linear-gradient(to bottom, #333, #ff66b2); /* Gradient from dark to pink */
+    color: white;
+    text-align: center;
+    padding: 5px 0;
+}
+
+footer p {
+    margin: 0;
+}

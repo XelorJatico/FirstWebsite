@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Xelor's Cafe</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('coffee-bg.jpg'); /* Add a coffee-related background image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+            background: url(cafe.jpeg.webp) center center/cover no-repeat; /* Add your coffee-themed background */
+        }
+
+        /* Semi-transparent container */
+        .signup-container {
+            background: rgba(0, 0, 0, 0.7); /* Transparent dark overlay */
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Heading */
+        .signup-container h2 {
+            margin-bottom: 20px;
+            color: #f5a623; /* Warm coffee tone */
+        }
+
+        /* Form Styling */
+        .signup-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .signup-container label {
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .signup-container input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Buttons */
+        .signup-container button {
+            padding: 10px;
+            background-color: #d2691e; /* Coffee brown */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .signup-container button:hover {
+            background-color: #a0522d; /* Darker brown */
+        }
+
+        /* Log-In Link */
+        .login-section {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #f5f5f5;
+        }
+
+        .login-section a {
+            color: #f5a623; /* Highlighted warm tone */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sign-Up Form Container -->
+    <div class="signup-container">
+        <h2>Create an Account</h2>
+        <form id="signupForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <!-- Log-In Link -->
+        <div class="login-section">
+            Already have an account? <a href="login.html">Log In</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get input values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Retrieve existing users from localStorage
+            const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+            // Check if the email already exists
+            const emailExists = storedUsers.some(user => user.email === email);
+
+            if (emailExists) {
+                alert('An account with this email already exists. Please use a different email.');
+            } else {
+                // Create a new user object
+                const newUser = { name, email, password };
+
+                // Add the new user to the users array
+                storedUsers.push(newUser);
+
+                // Save the updated users array to localStorage
+                localStorage.setItem('users', JSON.stringify(storedUsers));
+
+                alert('Sign-Up Successful! You can now log in.');
+
+                // Redirect to the login page
+                window.location.href = 'login.html'; // Change this as needed
+            }
+        });
+    </script>
+</body>
+</html>
